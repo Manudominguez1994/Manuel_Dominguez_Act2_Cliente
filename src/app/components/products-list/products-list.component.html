@@ -1,0 +1,18 @@
+<h3 class="mb-3">Productos</h3>
+
+<div class="row g-3">
+  @for (prod of productos; track prod.id) {
+    <div class="col-12 col-sm-6 col-md-4">
+      <app-product-card
+      [product]="prod">
+      </app-product-card>
+
+    </div>
+  }
+
+  @empty {
+    <div class="col-12 text-center text-muted">
+      No hay productos cargados
+    </div>
+  }
+</div>

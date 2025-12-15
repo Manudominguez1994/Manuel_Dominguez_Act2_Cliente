@@ -1,11 +1,27 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductService } from './services/product.service';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductFilterComponent } from './components/product-filter/product-filter.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [
+    CommonModule,
+    ProductsListComponent,
+    ProductFormComponent,
+    ProductFilterComponent
+  ],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'productos-daw';
+
+  constructor(private productService: ProductService) {}
+
+  onProductoCreado(datos: any) {
+    this.productService.agregarProducto(datos);
+  }
 }
